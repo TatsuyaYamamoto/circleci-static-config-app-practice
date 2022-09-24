@@ -1,12 +1,12 @@
-import CircleCI from '@circleci/circleci-config-sdk';
+import CircleCI from "@circleci/circleci-config-sdk";
 
-const {Config} = CircleCI;
+const { Config } = CircleCI;
 
-import { nodeExecutor } from './executors/node.js';
-import { test } from './jobs/test.js';
-import { build } from './jobs/build.js';
-import { orbsCircleciNode } from './orbs/circleci-node.js';
-import { workflow } from './workflow.js';
+import { nodeExecutor } from "./executors/node.js";
+import { test } from "./jobs/test.js";
+import { build } from "./jobs/build.js";
+import { orbsCircleciNode } from "./orbs/circleci-node.js";
+import { workflow } from "./workflow.js";
 
 const config = new Config(
   false,
@@ -15,8 +15,8 @@ const config = new Config(
   [nodeExecutor],
   undefined,
   undefined,
-  [orbsCircleciNode],
+  [orbsCircleciNode]
 );
 config.version = 2.1;
 
-export { config }
+export { config };

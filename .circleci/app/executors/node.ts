@@ -1,7 +1,9 @@
-import CircleCI from '@circleci/circleci-config-sdk';
+import CircleCI from "@circleci/circleci-config-sdk";
 
-const { executors: { DockerExecutor } } = CircleCI;
+const {
+  executors: { DockerExecutor },
+} = CircleCI;
 
-export const nodeExecutor = new DockerExecutor(
-  'cimg/node:16.15.1',
-).toReusable('docker-node');
+export const nodeExecutor = new DockerExecutor("cimg/node:16.15.1").toReusable(
+  "docker-node"
+);

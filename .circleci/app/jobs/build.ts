@@ -1,20 +1,18 @@
-import CircleCI from '@circleci/circleci-config-sdk';
+import CircleCI from "@circleci/circleci-config-sdk";
 
 const {
   Job,
   commands: { Checkout, Run },
-  reusable: { ReusedCommand }
+  reusable: { ReusedCommand },
 } = CircleCI;
 
-import { nodeExecutor } from '../executors/node.js';
-import { orbsCircleciNode } from '../orbs/circleci-node.js';
+import { nodeExecutor } from "../executors/node.js";
+import { orbsCircleciNode } from "../orbs/circleci-node.js";
 
-export const build = new Job('build', nodeExecutor.reuse(), [
+export const build = new Job("build", nodeExecutor.reuse(), [
   new Checkout(),
-  new ReusedCommand(
-    orbsCircleciNode.commands['install-packages'],
-  ),
+  new ReusedCommand(orbsCircleciNode.commands["install-packages"]),
   new Run({
-    command: 'npm run build',
+    command: "npm run build",
   }),
 ]);
