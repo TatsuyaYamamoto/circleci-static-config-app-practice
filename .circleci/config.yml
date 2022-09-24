@@ -10,6 +10,14 @@ executors:
       - image: cimg/node:16.15.1
     resource_class: medium
 jobs:
+  lint:
+    executor:
+      name: docker-node
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run lint
   test:
     executor:
       name: docker-node
@@ -27,11 +35,13 @@ jobs:
       - run:
           command: npm run build
 workflows:
-  dynamic-workflow:
+  "Lint, test, and build":
     jobs:
+      - lint
       - test
       - build:
           requires:
+            - lint
             - test
 orbs:
   node: circleci/node@5.0.2
