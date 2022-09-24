@@ -2,6 +2,7 @@ import CircleCI from "@circleci/circleci-config-sdk";
 
 const {
   orb: { OrbImport },
+  reusable: { ReusedCommand },
   parameters: { CustomParametersList },
 } = CircleCI;
 
@@ -25,3 +26,6 @@ export const orbsCircleciNode = new OrbImport(
   undefined,
   orbsCircleciNodeManifest
 );
+
+export const installPackages = () =>
+  new ReusedCommand(orbsCircleciNode.commands["install-packages"]);
