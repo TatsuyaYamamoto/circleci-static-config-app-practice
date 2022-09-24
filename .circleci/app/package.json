@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "ts-node-esm ./generate-yml.ts ../config.yml"
+  },
+  "devDependencies": {
+    "@circleci/circleci-config-sdk": "^0.10.0",
+    "ts-node": "^10.9.1"
+  }
+}
